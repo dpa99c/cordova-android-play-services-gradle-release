@@ -33,7 +33,7 @@ The problem arises when these plugins specify different versions of the Play Ser
 
 - [phonegap-plugin-push#17720](https://github.com/phonegap/phonegap-plugin-push/issues/17720)
 - [google-analytics-plugin#427](https://github.com/danwilson/google-analytics-plugin/issues/427)
-- [cordova-plugin-googleplus](https://github.com/EddyVerbruggen/cordova-plugin-googleplus/issues/398)
+- [cordova-plugin-googleplus#398](https://github.com/EddyVerbruggen/cordova-plugin-googleplus/issues/398)
 
 To resolve these version collisions, this plugin injects a Gradle configuration file into the native Android platform project, which overrides any versions specified by other plugins, and forces them to the version specified in its Gradle file.
 
