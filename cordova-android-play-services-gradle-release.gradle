@@ -1,0 +1,10 @@
+configurations.all {
+    resolutionStrategy.eachDependency { DependencyResolveDetails details ->
+        def requested = details.requested
+        if (requested.group == 'com.google.android.gms') {
+            if (!requested.name.startsWith("multidex")) {
+                details.useVersion '11.+'
+            }
+        }
+    }
+}
