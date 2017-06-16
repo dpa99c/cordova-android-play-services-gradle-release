@@ -37,6 +37,8 @@ The problem arises when these plugins specify different versions of the Play Ser
 
 To resolve these version collisions, this plugin injects a Gradle configuration file into the native Android platform project, which overrides any versions specified by other plugins, and forces them to the version specified in its Gradle file.
 
+If you're encountering similar problems with the Android Support libaries, checkout the sister plugin: [cordova-android-support-gradle-release](https://github.com/dpa99c/cordova-android-support-gradle-release).
+
 # Installation
 
     $ cordova plugin add cordova-android-play-services-gradle-release
