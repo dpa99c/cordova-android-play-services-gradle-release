@@ -46,7 +46,7 @@ Just install the plugin and that's it. It should fix should build.
 # Different library versions
 
 ## Default version
-By default, the `master` branch of this repo and corresponding npm release, will be made to specify the most major version of the most recent release of the Play Services library - [see here](https://developers.google.com/android/guides/releasesl) for a list recent versions.
+By default, the `master` branch of this repo and corresponding npm release, will be made to specify the most major version of the most recent release of the Play Services library - [see here](https://developers.google.com/android/guides/releases) for a list recent versions.
 
 ## Other versions
 
