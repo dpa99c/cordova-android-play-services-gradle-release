@@ -1,7 +1,7 @@
 cordova-android-play-services-gradle-release
 ======================================
 
-This Cordova/Phonegap plugin for Android aligns various versions of the Play Services library specified by other plugins to the latest release (or a specific) version.
+This Cordova/Phonegap plugin for Android aligns various versions of the Play Services library specified by other plugins to a specific version.
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
@@ -9,10 +9,11 @@ This Cordova/Phonegap plugin for Android aligns various versions of the Play Ser
 
 - [Purpose](#purpose)
 - [Installation](#installation)
-- [Different library versions](#different-library-versions)
+- [Library versions](#library-versions)
   - [Default version](#default-version)
   - [Other versions](#other-versions)
 - [Example](#example)
+- [Credits](#credits)
 - [License](#license)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -42,50 +43,27 @@ If you're encountering similar problems with the Android Support libraries, chec
 # Installation
 
     $ cordova plugin add cordova-android-play-services-gradle-release
+    $ cordova plugin add cordova-android-play-services-gradle-release  --variable PLAY_SERVICES_VERSION={required version}
     
-Just install the plugin and that's it. It should fix should build.
-
-# Different library versions
+# Library versions
 
 ## Default version
-By default, the `master` branch of this repo and corresponding npm release, will be made to specify the most major version of the most recent release of the Play Services library - [see here](https://developers.google.com/android/guides/releases) for a list recent versions.
+By default, this plugin will use the major version of the most recent release of the Play Services library - [see here](https://developers.google.com/android/guides/releases) for a list recent versions.
+
+    $ cordova plugin add cordova-android-play-services-gradle-release
 
 ## Other versions
 
 In some cases, you may want to specify a different version of the Play Services library. 
-So this plugin provides branches for various older major versions of the Play Services library.
+So this plugin enables you to specify other versions of the Play Services library using the `ANDROID_PLAY_SERVICES_VERSION_VERSION` plugin variable.
  
-Because Cordova doesn't support tags in plugins sourced from npm, you'll need to install this version directly from the git repo:
+For example, if you want to install v10 of the Play Services library, you'd specify the version via the variable:
 
-    cordova plugin add https://github.com/dpa99c/cordova-android-play-services-gradle-release#v10
-    
-The following branches currently exist:
-    
-- [master](https://github.com/dpa99c/cordova-android-play-services-gradle-release) (default)
-    - The most recent major release
-    - Currently uses `11.+`
-    - Install with: `cordova plugin add cordova-android-play-services-gradle-release`
-    - Or: `https://github.com/dpa99c/cordova-android-play-services-gradle-release`
-- [edge](https://github.com/dpa99c/cordova-android-play-services-gradle-release/tree/edge)
-    - The most recent release
-    - Uses `+`
-    - Install with: `cordova plugin add https://github.com/dpa99c/cordova-android-play-services-gradle-release#edge`
-- [v11](https://github.com/dpa99c/cordova-android-play-services-gradle-release/tree/v11)
-    - The highest v11 version
-    - Uses `11.+`
-    - Install with: `cordova plugin add https://github.com/dpa99c/cordova-android-play-services-gradle-release#v11`
-- [v10](https://github.com/dpa99c/cordova-android-play-services-gradle-release/tree/v10)
-    - The highest v10 version
-    - Uses `10.+`
-    - Install with: `cordova plugin add https://github.com/dpa99c/cordova-android-play-services-gradle-release#v10`
-- [v9](https://github.com/dpa99c/cordova-android-play-services-gradle-release/tree/v9)
-    - The highest v9 version
-    - Uses `9.+`
-    - Install with: `cordova plugin add https://github.com/dpa99c/cordova-android-play-services-gradle-release#v9`
+    cordova plugin add cordova-android-play-services-gradle-release --variable PLAY_SERVICES_VERSION=10.+
     
 # Example
 
-Forces the latest release version of the Play Services library to fix the build issue.
+Uses v10 of the Play Services library to fix the build issue.
 
 1. `cordova create test1 && cd test1/`
 2. `cordova platform add android@latest`
@@ -99,14 +77,19 @@ Observe the build succeeds and in the console output is `v10.2.6` of Play Servic
 5. `cordova plugin add cordova-plugin-googleplus@5.1.1`
 6. `cordova compile`
 
-Observe the build failed and in the console output is higher than `v10.2.6` (e.g `v11.0.0`) of Play Services library:
+Observe the build failed and in the console output is higher than `v10.2.6` (e.g `v11`) of Play Services library:
 
     :prepareComGoogleAndroidGmsPlayServicesBase1100Library
 
-7. `cordova plugin add cordova-android-play-services-gradle-release`
-8. `cordova compile`    
+7. `cordova plugin add cordova-android-play-services-gradle-release --variable PLAY_SERVICES_VERSION=10.+`
+8. `cordova prepare && cordova compile`
 
-Observe the build succeeds and in the console output is latest release version of Play Services library.
+Observe the build succeeds and in the console output is v10 of Play Services library.
+
+# Credits
+
+Thanks to [**Chris Scott, Transistor Software**](https://github.com/christocracy) for his idea of extending the initial implementation to support dynamic specification of the library version via a plugin variable in [cordova-google-api-version](https://github.com/transistorsoft/cordova-google-api-version)
+
 
 License
 ================

@@ -1,10 +1,26 @@
+repositories{
+  // Google APIs are now hosted at Maven
+  maven {
+    url 'https://maven.google.com'
+  }
+}
+
+def PLUGIN_NAME = "cordova-android-play-services-gradle-release"
+
+// Fetch PLAY_SERVICES_VERSION var from properties.gradle
+apply from: PLUGIN_NAME + '/properties.gradle'
+
+// List of libs to search for.
+def LIBS = [
+    'com.google.android.gms'
+]
+
+println("+-----------------------------------------------------------------");
+println("| " + PLUGIN_NAME + ": " + PLAY_SERVICES_VERSION);
+println("+-----------------------------------------------------------------");
+
 configurations.all {
     resolutionStrategy.eachDependency { DependencyResolveDetails details ->
-        def requested = details.requested
-        if (requested.group == 'com.google.android.gms') {
-            if (!requested.name.startsWith("multidex")) {
-                details.useVersion '11.+'
-            }
-        }
+        if (details.requested.group in LIBS) { details.useVersion PLAY_SERVICES_VERSION }
     }
 }

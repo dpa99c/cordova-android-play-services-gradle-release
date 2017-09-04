@@ -2,14 +2,17 @@
 <plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
         xmlns:android="http://schemas.android.com/apk/res/android"
         id="cordova-android-play-services-gradle-release"
-        version="0.0.2">
+        version="1.0.0">
 
     <name>cordova-android-play-services-gradle-release</name>
-    <description>Cordova/Phonegap plugin to align various versions of the Play Services library specified by other plugins to the latest release version</description>
+    <description>Cordova/Phonegap plugin to align various versions of the Play Services library specified by other plugins to a specific version</description>
     <author>Dave Alden</author>
 
     <platform name="android">
+        <hook type="before_prepare" src="scripts/before-prepare.js" />
+        <preference name="PLAY_SERVICES_VERSION" default="11.+" />
         <framework src="cordova-android-play-services-gradle-release.gradle" custom="true" type="gradleReference" />
+        <source-file src="properties.gradle" target-dir="cordova-android-play-services-gradle-release" />
     </platform>
 
 </plugin>
