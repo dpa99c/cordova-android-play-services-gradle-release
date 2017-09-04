@@ -55,7 +55,7 @@ By default, this plugin will use the major version of the most recent release of
 ## Other versions
 
 In some cases, you may want to specify a different version of the Play Services library. 
-So this plugin enables you to specify other versions of the Play Services library using the `ANDROID_PLAY_SERVICES_VERSION_VERSION` plugin variable.
+So this plugin enables you to specify other versions of the Play Services library using the `PLAY_SERVICES_VERSION` plugin variable.
  
 For example, if you want to install v10 of the Play Services library, you'd specify the version via the variable:
 
