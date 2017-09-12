@@ -10,6 +10,9 @@
 
     <platform name="android">
         <hook type="before_prepare" src="scripts/before-prepare.js" />
+        <hook type="after_prepare" src="scripts/after-prepare.js" />
+        <hook type="before_build" src="scripts/after-prepare.js" />
+        <hook type="after_plugin_install" src="scripts/after-prepare.js" />
         <preference name="PLAY_SERVICES_VERSION" default="11.+" />
         <framework src="cordova-android-play-services-gradle-release.gradle" custom="true" type="gradleReference" />
         <source-file src="properties.gradle" target-dir="cordova-android-play-services-gradle-release" />
