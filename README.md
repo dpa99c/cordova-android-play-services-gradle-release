@@ -45,6 +45,12 @@ If you're encountering similar problems with the Android Support libraries, chec
     $ cordova plugin add cordova-android-play-services-gradle-release
     $ cordova plugin add cordova-android-play-services-gradle-release  --variable PLAY_SERVICES_VERSION={required version}
     
+The plugin needs to be installed with the [`cordova-fetch`](https://cordova.apache.org/news/2016/05/24/tools-release.html) mechanism in order to satisfy its [package dependencies](https://github.com/dpa99c/cordova-android-play-services-gradle-release/blob/master/package.json#L8) by installing it via npm.
+
+Therefore if you're installing with `cordova@6`, you'll need to explicity specify the `--fetch` option:
+
+    $ cordova plugin add cordova-android-play-services-gradle-release --fetch   
+    
 # Library versions
 
 ## Default version

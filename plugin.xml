@@ -7,6 +7,10 @@
     <name>cordova-android-play-services-gradle-release</name>
     <description>Cordova/Phonegap plugin to align various versions of the Play Services library specified by other plugins to a specific version</description>
     <author>Dave Alden</author>
+    
+    <engines>
+      <engine name="cordova" version=">=6.2.0" />
+    </engines>
 
     <platform name="android">
         <hook type="before_prepare" src="scripts/before-prepare.js" />
