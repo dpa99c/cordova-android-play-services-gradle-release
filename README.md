@@ -69,13 +69,14 @@ Therefore if you're installing with `cordova@6`, you'll need to explicitly speci
 # Library versions
 
 ## Default version
-By default, this plugin will use the major version of the most recent release of the Play Services library - [see here](https://developers.google.com/android/guides/releases) for a list recent versions.
+By default, this plugin will use the most recent major version the Play Services library:
+The current default set by this plugin is: `15.+`
 
     $ cordova plugin add cordova-android-play-services-gradle-release
 
 ## Other versions
 
-In some cases, you may want to specify a different version of the Play Services library. 
+In some cases, you may want to specify a different version of the Play Services library - [see here](https://developers.google.com/android/guides/releases) for a list recent versions.
 So this plugin enables you to specify other versions of the Play Services library using the `PLAY_SERVICES_VERSION` plugin variable.
  
 For example, if you want to install v10 of the Play Services library, you'd specify the version via the variable:
