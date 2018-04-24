@@ -20,7 +20,7 @@ function run() {
         throw("Failed to load dependencies. If using cordova@6 CLI, ensure this plugin is installed with the --fetch option: " + e.toString());
     }
 
-    const GRADLE_FILENAME = path.resolve(process.cwd(), 'platforms', 'android', 'build.gradle');
+    const GRADLE_FILENAME = path.resolve(process.cwd(), 'platforms', 'android', 'app', 'build.gradle');
     const PACKAGE_PATTERN = /(compile "com.google.android.gms:[^:]+:)([^"]+)"/;
 
     var data = fs.readFileSync(path.resolve(process.cwd(), 'config.xml'));
