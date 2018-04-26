@@ -20,7 +20,7 @@ function run() {
         throw("Failed to load dependencies. If using cordova@6 CLI, ensure this plugin is installed with the --fetch option: " + e.toString());
     }
 
-    const GRADLE_FILENAME = path.resolve(process.cwd(), 'platforms', 'android', PLUGIN_NAME, 'properties.gradle');
+    const GRADLE_FILENAME = path.resolve(process.cwd(), 'platforms', 'android', 'app', PLUGIN_NAME, 'properties.gradle');
     const PROPERTIES_TEMPLATE = 'ext {PLAY_SERVICES_VERSION = "<VERSION>"}';
 
     var data = fs.readFileSync(path.resolve(process.cwd(), 'config.xml'));
