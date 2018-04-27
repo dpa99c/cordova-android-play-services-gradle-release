@@ -1,6 +1,18 @@
 const PLUGIN_NAME = "cordova-android-play-services-gradle-release";
 const SCRIPT_NAME = "after-prepare";
-var deferral;
+const V6 = "cordova-android@6";
+const V7 = "cordova-android@7";
+
+var FILE_PATHS = {};
+FILE_PATHS[V6] = {
+    "build.gradle": "platforms/android/build.gradle"
+};
+FILE_PATHS[V7] = {
+    "build.gradle": "platforms/android/app/build.gradle"
+};
+
+var deferral, fs, path, parser, platformVersion;
+
 
 function log(message) {
     console.log(PLUGIN_NAME + "." + SCRIPT_NAME + ": " + message);
@@ -11,16 +23,24 @@ function onError(error) {
     deferral.resolve();
 }
 
+function getCordovaAndroidVersion(){
+    var testPath = path.join(process.cwd(), 'platforms/android/app/src');
+    return fs.existsSync(testPath) ? V7 : V6;
+}
+
 function run() {
     try {
-        var fs = require('fs');
-        var path = require('path');
-        var parser = require('xml2js');
+        fs = require('fs');
+        path = require('path');
+        parser = require('xml2js');
     } catch (e) {
         throw("Failed to load dependencies. If using cordova@6 CLI, ensure this plugin is installed with the --fetch option: " + e.toString());
     }
 
-    const GRADLE_FILENAME = path.resolve(process.cwd(), 'platforms', 'android', 'build.gradle');
+    platformVersion = getCordovaAndroidVersion();
+    log("Android platform: " + platformVersion);
+
+    const GRADLE_FILENAME = path.resolve(process.cwd(), FILE_PATHS[platformVersion]["build.gradle"]);
     const PACKAGE_PATTERN = /(compile "com.google.android.gms:[^:]+:)([^"]+)"/;
 
     var data = fs.readFileSync(path.resolve(process.cwd(), 'config.xml'));

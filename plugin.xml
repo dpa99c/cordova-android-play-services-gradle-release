@@ -2,7 +2,7 @@
 <plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
         xmlns:android="http://schemas.android.com/apk/res/android"
         id="cordova-android-play-services-gradle-release"
-        version="1.3.1">
+        version="1.4.0">
 
     <name>cordova-android-play-services-gradle-release</name>
     <description>Cordova/Phonegap plugin to align various versions of the Play Services library specified by other plugins to a specific version</description>
@@ -18,7 +18,7 @@
         <hook type="after_prepare" src="scripts/after-prepare.js" />
         <hook type="before_build" src="scripts/after-prepare.js" />
         <hook type="after_plugin_install" src="scripts/after-prepare.js" />
-        <preference name="PLAY_SERVICES_VERSION" default="12.+" />
+        <preference name="PLAY_SERVICES_VERSION" default="15.+" />
         <framework src="cordova-android-play-services-gradle-release.gradle" custom="true" type="gradleReference" />
         <source-file src="properties.gradle" target-dir="cordova-android-play-services-gradle-release" /> <!-- cordova-android@6-->
         <source-file src="properties.gradle" target-dir="app/cordova-android-play-services-gradle-release" /> <!-- cordova-android@7-->
