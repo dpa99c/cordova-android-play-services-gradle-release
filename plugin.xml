@@ -14,10 +14,9 @@
     </engines>
 
     <platform name="android">
-        <hook type="before_prepare" src="scripts/before-prepare.js" />
-        <hook type="after_prepare" src="scripts/after-prepare.js" />
-        <hook type="before_build" src="scripts/after-prepare.js" />
-        <hook type="after_plugin_install" src="scripts/after-prepare.js" />
+        <hook type="after_prepare" src="scripts/apply-changes.js" />
+        <hook type="before_build" src="scripts/apply-changes.js" />
+        <hook type="after_plugin_install" src="scripts/apply-changes.js" />
         <preference name="PLAY_SERVICES_VERSION" default="15.+" />
         <framework src="cordova-android-play-services-gradle-release.gradle" custom="true" type="gradleReference" />
         <source-file src="properties.gradle" target-dir="cordova-android-play-services-gradle-release" /> <!-- cordova-android@6-->
