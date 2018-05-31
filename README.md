@@ -39,21 +39,34 @@ The problem arises when these plugins specify different versions of the Play Ser
 
 To resolve these version collisions, this plugin injects a Gradle configuration file into the native Android platform project, which overrides any versions specified by other plugins, and forces them to the version specified in its Gradle file.
 
-If you're encountering similar problems with the Android Support libraries, checkout the sister plugin: [cordova-android-support-gradle-release](https://github.com/dpa99c/cordova-android-support-gradle-release).
+If you're encountering similar problems with the Android Support and/or Firebase libraries, checkout the sister plugins:
+- [cordova-android-support-gradle-release](https://github.com/dpa99c/cordova-android-support-gradle-release)
+- [cordova-android-firebase-gradle-release](https://github.com/dpa99c/cordova-android-firebase-gradle-release)
 
 # Caveats
 
-There are certain Cordova plugins which, if included into a Cordova project along with this plugin, then this plugin is unable to override the library versions they specify.
-This is because they use a class to immediately apply their specified Google libraries, instead of just relying on the string version to be applied later on by Gradle. 
+**Other plugins that reference the Firebase library**
 
-Two commonly used plugins which do this are:
+* If your project includes a plugin which uses the Firebase library (such as [phonegap-plugin-push](https://github.com/phonegap/phonegap-plugin-push), [cordova-plugin-fcm](https://github.com/fechanique/cordova-plugin-fcm), [cordova-plugin-firebase](https://github.com/arnesson/cordova-plugin-firebase)) you may find your build still fails.
+* This is because the versions of the Play Services and Firebase libraries are related - see [Android Library Versions](https://developers.google.com/android/guides/versioning) for details.
+* You can use [cordova-android-firebase-gradle-release](https://github.com/dpa99c/cordova-android-firebase-gradle-release) to override the Firebase library version to align with the Play Services library version specified via this plugin in order to resolve build issues.
+* See [#50](https://github.com/dpa99c/cordova-plugin-request-location-accuracy/issues/50) for an example.
 
-- [cordova-plugin-fcm](https://github.com/fechanique/cordova-plugin-fcm) in [FCMPlugin.gradle](https://github.com/fechanique/cordova-plugin-fcm/blob/master/src/android/FCMPlugin.gradle#L13)
-- [phonegap-plugin-push](https://github.com/phonegap/phonegap-plugin-push) in [push.gradle](https://github.com/phonegap/phonegap-plugin-push/blob/master/push.gradle#L35)
+**Other plugins that reference the Google Services plugin**
 
-If you include these plugins (or others using the `apply plugin` strategy) in your project, you will likely find that this plugin cannot resolve your build issues because it's unable to override the library versions.
+* There are certain Cordova plugins which reference the [Google Services plugin](https://developers.google.com/android/guides/google-services-plugin) in their Gradle config, for example:
+    * [cordova-plugin-fcm](https://github.com/fechanique/cordova-plugin-fcm) in [FCMPlugin.gradle](https://github.com/fechanique/cordova-plugin-fcm/blob/master/src/android/FCMPlugin.gradle#L13)
+    * [phonegap-plugin-push@2.2.2](https://github.com/phonegap/phonegap-plugin-push/tree/v2.2.2) in [push.gradle](https://github.com/phonegap/phonegap-plugin-push/blob/v2.2.2/push.gradle#L35)
+* The Google Services plugin itself references a particular version of the Play Services library
+    * The version of Play Services library referenced depends on the version of the Google Services plugin referenced by the Cordova plugin.
+* If a plugin (such as `cordova-plugin-fcm`) is included into a Cordova project along with this plugin, then this plugin is unable to override the Play Services library version specified by the Google Services plugin.
+* Attempting to do result with result in a build failure with an error message such as `Found com.google.android.gms:play-services-location:12.+, but version 9.0.0 is needed for the google-services plugin.`
+* The only here solution you can implement using this plugin is to specifiy the same version as required by the Google Services plugin
+    * In the example error above, that would mean installing this plugin with: `cordova plugin add cordova-android-play-services-gradle-release  --variable PLAY_SERVICES_VERSION=9.0.0`
 
-[See here](https://github.com/fechanique/cordova-plugin-fcm/issues/350) for some suggestions for resolving these issues with `cordova-plugin-fcm`.
+
+
+
 
 # Installation
 
