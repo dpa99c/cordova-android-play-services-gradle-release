@@ -1,7 +1,7 @@
 const PLUGIN_NAME = "cordova-android-play-services-gradle-release";
 const V6 = "cordova-android@6";
 const V7 = "cordova-android@7";
-const PACKAGE_PATTERN = /(compile "com.google.android.gms:[^:]+:)([^"]+)"/;
+const PACKAGE_PATTERN = /(compile "com.google.android.gms:[^:]+:)([^"]+)"/g;
 const PROPERTIES_TEMPLATE = 'ext {PLAY_SERVICES_VERSION = "<VERSION>"}';
 
 var FILE_PATHS = {};
