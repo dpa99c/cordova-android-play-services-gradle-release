@@ -2,7 +2,7 @@
 <plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
         xmlns:android="http://schemas.android.com/apk/res/android"
         id="cordova-android-play-services-gradle-release"
-        version="1.4.6">
+        version="2.0.0">
 
     <name>cordova-android-play-services-gradle-release</name>
     <description>Cordova/Phonegap plugin to align various versions of the Play Services library specified by other plugins to a specific version</description>
@@ -14,23 +14,12 @@
     </engines>
 
     <platform name="android">
-        <hook type="after_prepare" src="scripts/apply-changes.js" />
+       <hook type="after_prepare" src="scripts/apply-changes.js" />
         <hook type="before_build" src="scripts/apply-changes.js" />
         <hook type="after_plugin_install" src="scripts/apply-changes.js" />
 
-        <!-- Cleanup on uninstall -->
-        <hook type="before_plugin_rm" src="scripts/on-uninstall.js" />
-        <hook type="before_plugin_uninstall" src="scripts/on-uninstall.js" />
-
         <preference name="PLAY_SERVICES_VERSION" default="15.+" />
-
-        <!-- cordova-android@6-->
-        <source-file src="cordova-android-play-services-gradle-release.gradle" target-dir="cordova-android-play-services-gradle-release" />
-        <source-file src="properties.gradle" target-dir="cordova-android-play-services-gradle-release" />
-
-        <!-- cordova-android@7-->
-        <source-file src="cordova-android-play-services-gradle-release.gradle" target-dir="app/cordova-android-play-services-gradle-release" />
-        <source-file src="properties.gradle" target-dir="app/cordova-android-play-services-gradle-release" />
+        <framework src="cordova-android-play-services-gradle-release.gradle" custom="true" type="gradleReference" />
     </platform>
 
 </plugin>

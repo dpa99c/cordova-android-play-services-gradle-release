@@ -5,10 +5,8 @@ repositories{
   }
 }
 
+def PLAY_SERVICES_VERSION = "15.+"
 def PLUGIN_NAME = "cordova-android-play-services-gradle-release"
-
-// Fetch PLAY_SERVICES_VERSION var from properties.gradle
-apply from: PLUGIN_NAME + '/properties.gradle'
 
 // List of libs to search for.
 def LIBS = [
