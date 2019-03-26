@@ -1,5 +1,5 @@
 var PLUGIN_NAME = "cordova-android-play-services-gradle-release";
-var PACKAGE_PATTERN = /(compile "com.google.android.gms:[^:]+:)([^"]+)"/g;
+var PACKAGE_PATTERN = /(compile|implementation|api|annotationProcessor)( "com.google.android.gms:[^:]+:)([^"]+)"/g;
 var PLUGIN_GRADLE_FOLDER_PATH = "platforms/android/"+PLUGIN_NAME;
 var VERSION_PATTERN = /def PLAY_SERVICES_VERSION = "[^"]+"/;
 var VERSION_TEMPLATE = "def PLAY_SERVICES_VERSION = \"<VERSION>\"";
@@ -101,7 +101,13 @@ function attempt(fn) {
 }
 
 module.exports = function (ctx) {
-    deferral = ctx.requireCordovaModule('q').defer();
+    try{
+        deferral = require('q').defer();
+    }catch(e){
+        e.message = 'Unable to load node module dependency \'q\': '+e.message;
+        log(e.message);
+        throw e;
+    }
     attempt(run)();
     return deferral.promise;
 };
