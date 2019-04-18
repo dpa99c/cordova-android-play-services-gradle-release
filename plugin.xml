@@ -18,7 +18,7 @@
         <hook type="before_build" src="scripts/apply-changes.js" />
         <hook type="after_plugin_install" src="scripts/apply-changes.js" />
 
-        <preference name="PLAY_SERVICES_VERSION" default="15.+" />
+        <preference name="PLAY_SERVICES_VERSION" default="16.+" />
         <framework src="cordova-android-play-services-gradle-release.gradle" custom="true" type="gradleReference" />
     </platform>
 
