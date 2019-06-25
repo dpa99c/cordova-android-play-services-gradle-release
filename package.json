@@ -1,12 +1,13 @@
 {
   "name": "cordova-android-play-services-gradle-release",
-  "version": "3.0.0",
-  "description": "Cordova/Phonegap plugin to align various versions of the Play Services library specified by other plugins to a specific version",
+  "version": "4.0.0",
+  "description": "Cordova/Phonegap plugin for Android to align versions of the Play Services library components specified by other plugins to a specific version",
   "author": "Dave Alden",
   "license": "MIT",
   "dependencies": {
     "q": "^1.4.1",
-    "semver": "5.6.0"
+    "semver": "5.6.0",
+    "xml2js": "^0.4.16"
   },
   "devDependencies": {}
 }

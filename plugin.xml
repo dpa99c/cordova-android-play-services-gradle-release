@@ -2,15 +2,15 @@
 <plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
         xmlns:android="http://schemas.android.com/apk/res/android"
         id="cordova-android-play-services-gradle-release"
-        version="3.0.0">
+        version="4.0.0">
 
     <name>cordova-android-play-services-gradle-release</name>
-    <description>Cordova/Phonegap plugin to align various versions of the Play Services library specified by other plugins to a specific version</description>
+    <description>Cordova/Phonegap plugin for Android to align versions of the Play Services library components specified by other plugins to a specific version</description>
     <author>Dave Alden</author>
-    
+
     <engines>
-      <engine name="cordova" version=">=6.2.0" />
-        <engine name="cordova-android" version=">=6.0.0" />
+        <engine name="cordova" version=">=8.0.0" />
+        <engine name="cordova-android" version=">=7.0.0" />
     </engines>
 
     <platform name="android">
@@ -18,7 +18,59 @@
         <hook type="before_build" src="scripts/apply-changes.js" />
         <hook type="after_plugin_install" src="scripts/apply-changes.js" />
 
-        <preference name="PLAY_SERVICES_VERSION" default="15.+" />
+        <preference name="play-services-ads" default="18.0.0" />
+        <preference name="play-services-ads-identifier" default="17.0.0" />
+        <preference name="play-services-ads-lite" default="18.0.0" />
+        <preference name="play-services-afs-native" default="17.0.0" />
+        <preference name="play-services-analytics" default="17.0.0" />
+        <preference name="play-services-analytics-impl" default="17.0.0" />
+        <preference name="play-services-appinvite" default="18.0.0" />
+        <preference name="play-services-audience" default="17.0.0" />
+        <preference name="play-services-auth" default="17.0.0" />
+        <preference name="play-services-auth-api-phone" default="17.0.0" />
+        <preference name="play-services-awareness" default="17.0.0" />
+        <preference name="play-services-base" default="17.0.0" />
+        <preference name="play-services-basement" default="17.0.0" />
+        <preference name="play-services-cast" default="17.0.0" />
+        <preference name="play-services-cast-framework" default="17.0.0" />
+        <preference name="play-services-clearcut" default="17.0.0" />
+        <preference name="play-services-cronet" default="17.0.0" />
+        <preference name="play-services-drive" default="17.0.0" />
+        <preference name="play-services-fido" default="18.0.0" />
+        <preference name="play-services-fitness" default="17.0.0" />
+        <preference name="play-services-flags" default="17.0.0" />
+        <preference name="play-services-games" default="18.0.0" />
+        <preference name="play-services-gass" default="18.0.0" />
+        <preference name="play-services-gcm" default="17.0.0" />
+        <preference name="play-services-identity" default="17.0.0" />
+        <preference name="play-services-iid" default="17.0.0" />
+        <preference name="play-services-instantapps" default="17.0.0" />
+        <preference name="play-services-location" default="17.0.0" />
+        <preference name="play-services-maps" default="17.0.0" />
+        <preference name="play-services-measurement" default="17.0.0" />
+        <preference name="play-services-measurement-api" default="17.0.0" />
+        <preference name="play-services-measurement-impl" default="17.0.0" />
+        <preference name="play-services-measurement-sdk" default="17.0.0" />
+        <preference name="play-services-measurement-sdk-api" default="17.0.0" />
+        <preference name="play-services-nearby" default="17.0.0" />
+        <preference name="play-services-oss-licenses" default="17.0.0" />
+        <preference name="play-services-panorama" default="17.0.0" />
+        <preference name="play-services-phenotype" default="17.0.0" />
+        <preference name="play-services-places" default="17.0.0" />
+        <preference name="play-services-places-placereport" default="17.0.0" />
+        <preference name="play-services-plus" default="17.0.0" />
+        <preference name="play-services-safetynet" default="17.0.0" />
+        <preference name="play-services-stats" default="17.0.0" />
+        <preference name="play-services-tagmanager" default="17.0.0" />
+        <preference name="play-services-tagmanager-api" default="17.0.0" />
+        <preference name="play-services-tagmanager-v4-impl" default="17.0.0" />
+        <preference name="play-services-tasks" default="17.0.0" />
+        <preference name="play-services-vision" default="18.0.0" />
+        <preference name="play-services-vision-common" default="18.0.0" />
+        <preference name="play-services-vision-image-label" default="18.0.0" />
+        <preference name="play-services-wallet" default="17.0.0" />
+        <preference name="play-services-wearable" default="17.0.0" />
+
         <framework src="cordova-android-play-services-gradle-release.gradle" custom="true" type="gradleReference" />
     </platform>
 
