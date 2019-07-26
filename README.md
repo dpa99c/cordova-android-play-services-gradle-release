@@ -27,7 +27,7 @@ Some Cordova plugins include the [Play Services library](https://developers.goog
 Most commonly, these are now included into the Cordova project by specifying them as Gradle dependencies (see the [Cordova plugin spec documenation](https://cordova.apache.org/docs/en/latest/plugin_ref/spec.html#framework)).
 
 Example plugins:
-- [cordova-plugin-googleplus)](https://github.com/EddyVerbruggen/cordova-plugin-googleplus)
+- [cordova-plugin-googleplus](https://github.com/EddyVerbruggen/cordova-plugin-googleplus)
 - [phonegap-plugin-push@1](https://github.com/phonegap/phonegap-plugin-push/tree/v1.10.5)
 - [google-analytics-plugin](https://github.com/danwilson/google-analytics-plugin)
 
